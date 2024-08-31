@@ -1,4 +1,5 @@
 import 'package:cft_market/pages/Auth/forgot_screen.dart';
+import 'package:cft_market/pages/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -84,7 +85,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       ElevatedButton(
                           onPressed: ()  {
-
+                            Navigator.push(context, MaterialPageRoute(builder: (ctx) => HomeScreen()));
                           },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.teal,

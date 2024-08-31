@@ -1,7 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:mailer/smtp_server.dart';
+import 'package:mailer/mailer.dart';
 
-class ForgotScreen extends StatelessWidget {
+class ForgotScreen extends StatefulWidget {
   const ForgotScreen({super.key});
+
+  @override
+  State<ForgotScreen> createState() => _ForgotScreenState();
+}
+
+class _ForgotScreenState extends State<ForgotScreen> {
+  Future<void> sendEmail() async {
+        final smtpServer = gmail(dotenv.env['OUTLOOK_EMAIL']!, dotenv.env['OUTLOOK_PASSWORD']!);
+                // 'nfte uyhq gnjb duze');
+    final message = Message()
+    ..from =  Address(dotenv.env['OUTLOOK_EMAIL']!, 'Carolina Farm Trust')
+      // ..ccRecipients.add('renukalavanyadevib@gmail.com')
+      ..recipients.add('s160722@rguktsklm.ac.in')
+          ..subject = "Reset Password"
+          ..text = "Click on the provided link to reset password";
+
+        try {
+          final sendReport = await send(message, smtpServer);
+          print('Message sent: ' + sendReport.toString());
+        } on MailerException catch (e) {
+          print('Message not sent. \n' + e.toString());
+          for (var p in e.problems) {
+            print('Problem: ${p.code}: ${p.msg}');
+          }
+        }
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +91,10 @@ class ForgotScreen extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: ()  {
-          
+                          sendEmail();
+
+
+
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.teal,
