@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_device_type/flutter_device_type.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:mailer/mailer.dart';
@@ -43,11 +44,24 @@ class _ForgotScreenState extends State<ForgotScreen> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Image.asset(
-                    "assets/images/background.png",
-                    fit: BoxFit.fill,
-                    height: MediaQuery.of(context).size.height * 0.50,
-                    width: double.infinity,
+                  Row(
+                    mainAxisAlignment: Device.get().isTablet ? MainAxisAlignment.center : MainAxisAlignment.start,
+                    children: [
+                      Device.get().isTablet ?
+                      Image.asset(
+                        "assets/images/background.png",
+                        fit: BoxFit.fill,
+                        height: MediaQuery.of(context).size.height * 0.45,
+                        width: 500,
+                      ) : Expanded(
+                        child: Image.asset(
+                          "assets/images/background.png",
+                          fit: BoxFit.fill,
+                          height: MediaQuery.of(context).size.height * 0.45,
+                          width: Device.width,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -76,7 +90,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
                           blurRadius: 10,),
                       ]
                   ),
-                  width: double.infinity,
+                  width: Device.get().isTablet ? 500 : double.infinity,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

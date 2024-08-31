@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_device_type/flutter_device_type.dart';
 
 class ProfileSettingsScreen extends StatelessWidget {
   const ProfileSettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final double notchHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
         backgroundColor: Colors.grey.shade50,
         body: Column(
         children: [
           Container(
             alignment: Alignment.bottomCenter,
-            height: 70,
+            height: notchHeight + 56,
             color: Colors.teal.shade400,
             child: Row(
               children: [

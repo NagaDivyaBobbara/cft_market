@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_device_type/flutter_device_type.dart';
 
 
 class SaleOrderDetailScreen extends StatelessWidget {
@@ -9,7 +10,7 @@ class SaleOrderDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+    backgroundColor: Colors.grey.shade100,
       body: Column(
         children: [
           _getNavigationHeader(context),
@@ -33,8 +34,9 @@ class SaleOrderDetailScreen extends StatelessWidget {
 }
 
 Widget _getNavigationHeader(BuildContext context) {
+  final double notchHeight = MediaQuery.of(context).padding.top;
   return Container(
-    height: 70,
+    height: notchHeight+50,
     alignment: Alignment.bottomCenter,
     decoration: BoxDecoration(
       color: Colors.teal.shade400,
@@ -346,6 +348,7 @@ Widget _getOrderStatusTilesView() {
                   color: Colors.grey.shade300,
                 ),
                 child:  Row(
+                  mainAxisAlignment: Device.get().isTablet ? MainAxisAlignment.center : MainAxisAlignment.start,
                   children: [
                     Icon(Icons.approval_outlined,color: Colors.grey.shade600,),
                     Text("Approved", style: TextStyle(fontSize: 13, color: Colors.grey.shade600,fontWeight:  FontWeight.bold),),
@@ -363,7 +366,8 @@ Widget _getOrderStatusTilesView() {
                 decoration: BoxDecoration(
                     color: Colors.teal.shade50,
                     borderRadius: BorderRadius.circular(10)),
-                child: const Row(
+                child: Row(
+                  mainAxisAlignment: Device.get().isTablet ? MainAxisAlignment.center : MainAxisAlignment.start,
                   children: [
                     Icon(Icons.approval_outlined, color: Colors.teal,),
                     Text("Accepted", style: TextStyle(fontSize: 13, color: Colors.teal,fontWeight:  FontWeight.bold),),
@@ -382,6 +386,7 @@ Widget _getOrderStatusTilesView() {
                     color: Colors.grey.shade300,
                     borderRadius: BorderRadius.circular(10)),
                 child:  Row(
+                  mainAxisAlignment: Device.get().isTablet ? MainAxisAlignment.center : MainAxisAlignment.start,
                   children: [
                     Icon(Icons.approval_outlined,color: Colors.grey.shade600,),
                     Text("Created", style: TextStyle(fontSize: 13, color: Colors.grey.shade600,fontWeight:  FontWeight.bold),),
