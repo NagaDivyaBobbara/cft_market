@@ -4,6 +4,7 @@ import 'package:cft_market/pages/sale_order_detail/sale_order_detail_screen.dart
 import 'package:cft_market/serviceLocator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   await initServiceProvider();
