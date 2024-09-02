@@ -18,7 +18,9 @@ const jwt = "";
 Future<void> initServiceProvider() async {
   await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   serviceLocator.registerLazySingleton<HomeScreenViewmodel>(()=> HomeScreenViewmodel());
   serviceLocator.registerLazySingleton<SaleOrderListApi>(() => SaleOrderListApiImpl());
   serviceLocator.registerLazySingleton<SaleOrderListViewmodel>(() => SaleOrderListViewmodel(saleOrderListApi: serviceLocator.get<SaleOrderListApi>()));

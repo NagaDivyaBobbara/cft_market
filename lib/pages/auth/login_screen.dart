@@ -8,7 +8,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("dsfsfsdf${Device.get().isTablet}");
     return Scaffold(
         backgroundColor: Colors.grey[100],
         body: Center(
